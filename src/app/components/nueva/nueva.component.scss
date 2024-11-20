@@ -1,0 +1,74 @@
+.divider {
+    margin: 1rem 0;
+    border: 1px solid #ddd;
+  }
+  
+  .newAnswer {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #058c42;
+    margin: 1rem 0;
+  
+    svg {
+      margin-right: 8px;
+    }
+  
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  .containerAccordion {
+    margin-bottom: 1rem;
+  
+    .accordion {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+  
+      .accordion-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f5f5f5;
+        padding: 0.75rem;
+        border-bottom: 1px solid #ddd;
+  
+        h5 {
+          margin: 0;
+          font-size: 1.1rem;
+        }
+  
+        button {
+          border: none;
+          background-color: transparent;
+          color: #d9534f;
+  
+          &:hover {
+            color: #c9302c;
+          }
+        }
+      }
+  
+      .accordion-body {
+        padding: 1rem;
+  
+        label {
+          font-weight: bold;
+          margin-top: 0.5rem;
+        }
+  
+        input,
+        select {
+          margin-bottom: 1rem;
+          width: 100%;
+        }
+      }
+    }
+  }
+  
+  .alert {
+    margin-top: 1rem;
+  }
+  

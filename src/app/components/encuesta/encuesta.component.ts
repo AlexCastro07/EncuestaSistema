@@ -1,0 +1,53 @@
+import { Component,OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ActionsService } from '../../services/actions.service';
+import { NgIf,NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';  // Importa FormsModule
+@Component({
+  selector: 'app-encuesta',
+  standalone: true,
+  imports: [NgIf,NgFor,FormsModule],
+  templateUrl: './encuesta.component.html',
+  styleUrl: './encuesta.component.scss'
+})
+export class EncuestaComponent implements OnInit {
+  private ID: string ='';
+  public encuesta: any;
+  public pregunta: any;
+  public contador = 0;
+  public respuesta: string | null = null; // Permite que 'respuesta' sea un string o null
+
+
+
+  public respuestas = Array(0);
+
+  constructor(private rutaActiva: ActivatedRoute, private action: ActionsService, private ruta: Router) {
+    this.ID = rutaActiva.snapshot.params['ID'];
+
+  }
+
+  ngOnInit(): void {
+    this.encuesta = this.action.getEncuestas(this.ID)[0];
+    if (this.encuesta.preguntas.length > 0){
+      this.pregunta = this.encuesta.preguntas[this.contador];
+      this.contador++;
+    }
+  }
+
+  save() {
+    this.respuestas.push(parseInt(this.respuesta ?? '0')); // Si es null, usará '0' como valor por defecto
+    this.next();
+  }
+  
+
+  next(){
+    this.pregunta = this.encuesta.preguntas[this.contador];
+    this.contador++;
+    this.respuesta = null;
+    if (this.contador > this.encuesta.preguntas.length){
+      this.action.setRespuesta(JSON.stringify({ ID: this.ID, respuestas: this.respuestas }));
+
+      this.ruta.navigate(['']);
+    }
+}
+}

@@ -1,0 +1,153 @@
+// Variables de color
+$primary-color: #003844;
+$secondary-color: #058C42;
+$third-color: #f9f9f9;
+
+// Estilo global
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: $third-color;
+}
+
+.main {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  .container-fluid {
+    display: flex;
+    flex-grow: 1;
+  }
+}
+
+// Sidebar
+.sidebar {
+  background-color: $primary-color;
+  color: white;
+  width: 250px;
+  position: fixed;
+  height: 100%;
+  transition: all 0.3s ease;
+  &.opened {
+    left: 0;
+  }
+  &.closed {
+    left: -250px;
+  }
+
+  .menu {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+
+    li {
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+
+      a {
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        padding: 5px 0;
+        font-size: 16px;
+        transition: color 0.3s;
+        &:hover {
+          color: $secondary-color;
+        }
+        svg {
+          margin-right: 10px;
+        }
+      }
+
+      &.active {
+        background-color: $secondary-color;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+// Navbar
+.navbar {
+  background-color: $primary-color;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  .btn {
+    background-color: transparent;
+    border: none;
+    color: white;
+    svg {
+      fill: white;
+    }
+    &:hover {
+      background-color: transparent;
+      color: $secondary-color;
+    }
+  }
+
+  div {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+// Content Area
+.container {
+  margin-left: 250px; // Space for the sidebar
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.conTouter {
+  padding: 20px;
+  flex-grow: 1;
+}
+
+// Modal Styles
+.modal-content {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  
+  .modal-header {
+    border-bottom: 1px solid #ddd;
+    h5 {
+      color: $primary-color;
+    }
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      border-radius: 5px;
+      padding: 8px 15px;
+      &.btn-secondary {
+        background-color: #ddd;
+        color: #333;
+      }
+      &.btn-primary {
+        background-color: $secondary-color;
+        color: white;
+      }
+    }
+  }
+}
+
+// Media Queries
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .container {
+    margin-left: 0;
+  }
+}

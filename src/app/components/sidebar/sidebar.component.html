@@ -1,0 +1,61 @@
+<div class="main">
+    <div class="container-fluid">
+      <!-- Sidebar -->
+      <div class="sidebar" [class.open]="sideBarOpen">
+        <ul class="menu">
+          <li>
+            <a [routerLink]="['']" routerLinkActive="router-link-active">
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-fill">
+                <path d="..." />
+              </svg>
+              Inicio
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/dashboard/new']" routerLinkActive="router-link-active">
+              <svg class="bi bi-plus-circle-fill" width="1em" height="1em">
+                <path d="..." />
+              </svg>
+              Nueva
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/dashboard/list']" routerLinkActive="router-link-active">
+              <svg class="bi bi-receipt" width="1em" height="1em">
+                <path d="..." />
+              </svg>
+              Lista de Encuestas
+            </a>
+          </li>
+        </ul>
+      </div>
+  
+      <!-- Header -->
+      <header>
+        <button (click)="toggleSidebar()">
+          <ng-container *ngIf="sideBarOpen; else closed">
+            <svg class="bi bi-chevron-double-left" width="1em" height="1em">
+              <path d="..." />
+            </svg>
+          </ng-container>
+          <ng-template #closed>
+            <svg class="bi bi-chevron-double-right" width="1em" height="1em">
+              <path d="..." />
+            </svg>
+          </ng-template>
+        </button>
+        <span>Sistema de Encuesta</span>
+      </header>
+  
+      <!-- Main Content -->
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+  
+      <!-- Footer -->
+      <footer>
+        Autor: Marco Velasquez Figarella - <a href="https://github.com/Marco90v">GitHub</a>
+      </footer>
+    </div>
+  </div>
+  

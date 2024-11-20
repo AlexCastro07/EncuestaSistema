@@ -1,0 +1,64 @@
+/* Contenedor general */
+.container {
+    padding: 20px;
+  }
+  
+  /* Barra superior */
+  .row.barLogin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+  }
+  
+  /* Título */
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Botón de login */
+  .login .mat-raised-button {
+    background-color: #003844;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+  }
+  
+  /* Estilo de las tarjetas */
+  .example-card {
+    background-color: white;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mat-card-header {
+    background-color: #058C42;
+    padding: 15px;
+    color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .mat-card-title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .mat-card-content {
+    padding: 15px;
+  }
+  
+  .mat-card-actions {
+    padding: 15px;
+    text-align: right;
+  }
+  
+  /* No encuestas */
+  .noEncuestas {
+    text-align: center;
+    padding: 15px;
+    color: gray;
+  }
+  
