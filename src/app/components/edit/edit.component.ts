@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators, FormArray,ReactiveFormsModule } fro
 import { ActionsService } from '../../services/actions.service'; 
 import { NgFor,NgIf } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppComponent } from "../../app.component";
+import { ModalComponent } from "../../modal/modal.component";
 
 interface Pregunta {
   pregunta: string;
@@ -11,7 +13,7 @@ interface Pregunta {
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [NgFor,NgIf,ReactiveFormsModule],
+  imports: [NgFor, NgIf, ReactiveFormsModule, AppComponent, ModalComponent],
   templateUrl: '../nueva/nueva.component.html',
   styleUrl: '../nueva/nueva.component.scss'
 })
@@ -24,11 +26,13 @@ export class EditComponent implements OnInit {
   public preguntas = this.formAnswers.get('preguntas') as FormArray;
   public validated = false;
   public dateSave = false;
-  private item: number = 0;
-  private ID: any;
+  public item: number = 0;
+  public ID: any;
+  selectedItem: any;
+  isModalVisible: boolean = false;
 
 
-  constructor(private action: ActionsService, private rutaActiva: ActivatedRoute, private ruta: Router) {
+  constructor(public action: ActionsService, public rutaActiva: ActivatedRoute, public ruta: Router) {
       this.ID = rutaActiva.snapshot.params['ID'];
       action.dA.subscribe(a => {
           if (a === 'deleteItem'){ this.delete(); }
@@ -74,10 +78,20 @@ newAnswer(){
       }
   }
 
-delete(){ this.preguntas.removeAt(this.item); }
-
-itemValue(i: any): void {
-  this.item = i;
+delete(){ 
+  this.preguntas.removeAt(this.item);
+  this.isModalVisible = false; 
 }
+
+closeModal() {
+  this.isModalVisible = false;
+}
+
+openModal(item: any) {
+  this.selectedItem = item;
+  this.isModalVisible = true;
+}
+
+itemValue(i: any){ this.item = i; }
 
 }

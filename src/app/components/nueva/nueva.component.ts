@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray,ReactiveFormsModule } from '@angular/forms';
 import { ActionsService } from '../../services/actions.service';
 import { NgFor, NgIf } from '@angular/common';
-
+import { ModalComponent } from '../../modal/modal.component';
 @Component({
   selector: 'app-nueva',
   standalone: true,
-  imports: [NgFor, NgIf,ReactiveFormsModule],
+  imports: [NgFor, NgIf,ReactiveFormsModule, ModalComponent],
   templateUrl: './nueva.component.html',
   styleUrl: './nueva.component.scss'
 })
@@ -19,8 +19,10 @@ export class NuevaComponent implements OnInit {
   public validated = false;
   public dateSave = false;
   private item: number = 0; // Inicializado a 0
+  selectedItem: any;
+  isModalVisible: boolean = false;
 
-  constructor(private action: ActionsService) {
+  constructor(public action: ActionsService) {
     action.dA.subscribe(action => {
       if (action === 'deleteItem') {
         this.delete();
@@ -61,9 +63,19 @@ getPregunta(index: number): FormGroup {
 
   delete() {
     this.preguntas.removeAt(this.item);
+    this.isModalVisible = false;
   }
 
-  itemValue(i: any): void {
-    this.item = i;
+  closeModal() {
+    this.isModalVisible = false;
   }
+  
+
+  openModal(item: any) {
+    this.selectedItem = item;
+    this.isModalVisible = true;
+  }
+  
+  itemValue(i: any){ this.item = i; }
+
 }

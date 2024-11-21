@@ -16,7 +16,9 @@ export class ActionsService {
   constructor() {
   }
 
-  deleteAnswer(){ this.dA.emit('deleteItem'); }
+  deleteAnswer(){ 
+    this.dA.emit('deleteItem'); 
+  }
 
   getEncuestas(id?: string): any[]{
     this.getStorage();

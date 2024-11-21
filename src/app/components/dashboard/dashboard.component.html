@@ -66,8 +66,9 @@
   
       <!-- Header -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="btn btn-outline-secondary" (click)="toggleSidebar()">
-          <span *ngIf="sideBar else elseBlock">
+        <button type="button" class="btn btn-outline-secondary" (click)="toggleSidebar()"aria-label="Toggle Sidebar" 
+        title="Toggle Sidebar">
+          <span *ngIf="sideBar; else elseBlock">
             <svg
               class="bi bi-chevron-double-left"
               width="1em"
@@ -106,6 +107,8 @@
             </svg>
           </ng-template>
         </button>
+        
+
         <div>Sistema de Encuesta</div>
       </nav>
   
