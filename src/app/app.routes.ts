@@ -17,7 +17,7 @@ export const routes: Routes = [
     {path: 'list', component: ListComponent},
     {path: 'edit/:ID', component: EditComponent},
     {path: 'result/:ID', component: ResultComponent},
-    {path: '', redirectTo: 'list', pathMatch: 'full'}
+    {path: '', redirectTo: 'dashboard', pathMatch: 'full'}
   ]}
 ];
 

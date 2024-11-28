@@ -1,73 +1,53 @@
-.main {
-    display: flex;
-  
-    .sidebar {
-      width: 250px;
-      background: #003844;
-      color: #f9f9f9;
-      transition: transform 0.3s ease-in-out;
-      transform: translateX(-100%);
-      position: fixed;
-      height: 100%;
-      z-index: 10;
-  
-      &.open {
-        transform: translateX(0);
-      }
-  
-      .menu {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-  
-        li {
-          a {
-            display: flex;
-            align-items: center;
-            padding: 1em;
-            text-decoration: none;
-            color: inherit;
-            &:hover {
-              background: #058c42;
-            }
-          }
-        }
-      }
-    }
-  
-    header {
-      background: #003844;
-      color: #f9f9f9;
+// Variables de color
+$primary-color: #003844;
+$secondary-color: #058C42;
+$third-color: #f9f9f9;
+
+.sidebar {
+  background-color: $primary-color;
+  color: white;
+  width: 250px;
+  position: fixed;
+  height: 100%;
+  transition: all 0.3s ease;
+  top: 60px; 
+  &.opened {
+    left: 0;
+  }
+  &.closed {
+    left: -250px;
+  }
+
+  .menu {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+
+    li {
+      padding: 10px 20px;
       display: flex;
       align-items: center;
-      padding: 1em;
-      width: 100%;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  
-      button {
-        background: none;
-        border: none;
-        color: inherit;
-        cursor: pointer;
+
+      a {
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        padding: 5px 0;
+        font-size: 16px;
+        transition: color 0.3s;
+        &:hover {
+          color: $secondary-color;
+        }
+        svg {
+          margin-right: 10px;
+        }
       }
-    }
-  
-    main {
-      flex: 1;
-      margin-left: 250px;
-      padding: 1em;
-      transition: margin-left 0.3s ease-in-out;
-  
-      &.sidebar-closed {
-        margin-left: 0;
+
+      &.active {
+        background-color: $secondary-color;
+        border-radius: 5px;
       }
-    }
-  
-    footer {
-      background: #003844;
-      color: #f9f9f9;
-      padding: 1em;
-      text-align: center;
     }
   }
-  
+}

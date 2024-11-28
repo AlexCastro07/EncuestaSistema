@@ -10,10 +10,7 @@ import { NgIf } from '@angular/common'; // Si usas directivas como *ngI
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
-  sideBarOpen = false;
+  sideBar: boolean = false;
 
-  toggleSidebar() {
-    this.sideBarOpen = !this.sideBarOpen;
 
-}
 }

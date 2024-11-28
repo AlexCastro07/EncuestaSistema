@@ -6,7 +6,7 @@
         <div class="sub-header-result">
             <h3>Total de encuestados: {{respuestas.length}}</h3>
         </div>
-        <div class="contentCanvas" *ngFor="let pregunta of preguntas.preguntas; let i = index ">
+        <div class="contentCanvas" *ngFor="let pregunta of preguntas?.preguntas; let i = index ">
             <canvas #myChart class="myChart" id="myChart" width="400" height="400" style="display: inline; margin-right: 5em;" ></canvas>
         </div>
     </div>

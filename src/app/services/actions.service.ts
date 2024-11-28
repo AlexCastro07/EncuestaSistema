@@ -71,7 +71,7 @@ export class ActionsService {
     }
   }
 
-  setRespuesta(respuesta: string){
+  setRespuesta(respuesta: any){
     this.getStorage();
     this.respuestas.push(respuesta);
     localStorage.setItem('respuestas', JSON.stringify(this.respuestas));

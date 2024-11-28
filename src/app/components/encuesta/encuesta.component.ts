@@ -11,14 +11,11 @@ import { FormsModule } from '@angular/forms';  // Importa FormsModule
   styleUrl: './encuesta.component.scss'
 })
 export class EncuestaComponent implements OnInit {
-  private ID: string ='';
+  private ID: any;
   public encuesta: any;
   public pregunta: any;
   public contador = 0;
-  public respuesta: string | null = null; // Permite que 'respuesta' sea un string o null
-
-
-
+  public respuesta: any; // Permite que 'respuesta' sea un string o null
   public respuestas = Array(0);
 
   constructor(private rutaActiva: ActivatedRoute, private action: ActionsService, private ruta: Router) {
@@ -35,7 +32,7 @@ export class EncuestaComponent implements OnInit {
   }
 
   save() {
-    this.respuestas.push(parseInt(this.respuesta ?? '0')); // Si es null, usará '0' como valor por defecto
+    this.respuestas.push(parseInt(this.respuesta));
     this.next();
   }
   
@@ -45,8 +42,7 @@ export class EncuestaComponent implements OnInit {
     this.contador++;
     this.respuesta = null;
     if (this.contador > this.encuesta.preguntas.length){
-      this.action.setRespuesta(JSON.stringify({ ID: this.ID, respuestas: this.respuestas }));
-
+      this.action.setRespuesta({ID: this.ID, respuestas: this.respuestas });
       this.ruta.navigate(['']);
     }
 }

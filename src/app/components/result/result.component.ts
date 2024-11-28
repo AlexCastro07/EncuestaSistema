@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgFor } from '@angular/common';
 import {Chart, registerables} from 'chart.js';
 
+Chart.register(...registerables);
 @Component({
   selector: 'app-result',
   standalone: true,
@@ -45,25 +46,18 @@ export class ResultComponent implements OnInit, AfterViewInit {
   
 
   resultados(tipo: string, numPre: number): number[] {
-    let res: number[] = [];  // Inicializar 'res' con un array vacío
+    let res: any[] = [];  // Inicializar 'res' con un array vacío
   
-    if (tipo === '0') {
-      res = [0, 0];
-    } else if (tipo === '1') {
-      res = [0, 0, 0, 0, 0];
-    } else if (tipo === '2') {
-      res = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    }
+    if (tipo === '0') {res = [0, 0];} 
+    if (tipo === '1') {res = [0, 0, 0, 0, 0];} 
+    if (tipo === '2') {res = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];}
   
-    this.respuestas.forEach((element: { respuestas: number[] }) => {
-      res[element.respuestas[numPre]]++;
-    });
-  
+    this.respuestas.forEach((element: any )=> res[element.respuestas[numPre]]++);
     return res;
   }
 
   ngAfterViewInit() {
-    this.ctx.forEach((e, i) => {
+    this.ctx.forEach((e:any, i:any) => {
       this.myChart = new Chart(e.nativeElement.getContext('2d'), {
         type: 'bar',
         data: {
@@ -103,18 +97,18 @@ export class ResultComponent implements OnInit, AfterViewInit {
           }]
         },
         options: {
-          responsive: true,  // Cambié 'false' a 'true' por razones de responsividad
+          responsive: false,  // Cambié 'false' a 'true' por razones de responsividad
           scales: {
             y: {
-              min: 0,  // Esta es la forma correcta de asegurar que el eje Y comience en 0
+              beginAtZero: true,
               ticks: {
-                // Eliminamos 'beginAtZero' ya que está controlado por 'min'
-                // Puedes agregar más configuraciones si es necesario aquí
+                  stepSize: 1 // Ajusta los intervalos en el eje Y
               }
-            }
           }
         }
+      }
       });
+
     });
   }
   
