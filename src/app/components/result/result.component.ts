@@ -1,14 +1,15 @@
 import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 import { ActionsService } from '../../services/actions.service'; 
 import { ActivatedRoute } from '@angular/router';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import {Chart, registerables} from 'chart.js';
+
 
 Chart.register(...registerables);
 @Component({
   selector: 'app-result',
   standalone: true,
-  imports: [NgFor,],
+  imports: [NgFor,NgIf],
   templateUrl: './result.component.html',
   styleUrl: './result.component.scss'
 })
@@ -111,6 +112,23 @@ export class ResultComponent implements OnInit, AfterViewInit {
 
     });
   }
+
+  // Método para obtener las respuestas abiertas (tipo '3')
+/*getRespuestasAbiertas(preguntaIndex: number): string[] {
+
+  const respuestasAbiertas: string[] = [];
+
+  // Itera sobre las respuestas y guarda las respuestas abiertas correspondientes al índice de la pregunta
+  this.respuestas.forEach((respuesta: any) => {
+    if (respuesta.tipo === '3' && respuesta.preguntaIndex === preguntaIndex) {
+      respuestasAbiertas.push(respuesta.respuesta);
+    }
+  });
+  console.log(respuestasAbiertas);
+
+  return respuestasAbiertas;
+}
+*/
   
   ngOnInit(): void {
   }

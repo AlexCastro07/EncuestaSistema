@@ -31,6 +31,12 @@
             <input type="radio" name="respuesta" [(ngModel)]="respuesta" [value]="value" /> {{ value + 1 }}
           </label>
         </div>
+
+        <!-- Pregunta abierta -->
+        <div *ngIf="pregunta.tipo === '3'">
+          <label for="respuesta">Escribe tu respuesta:</label>
+          <textarea id="respuesta" name="respuesta" [(ngModel)]="respuesta" rows="3" cols="40"></textarea>
+        </div>
       </div>
       <button (click)="save()">Guardar</button>
     </div>

@@ -68,7 +68,16 @@ $border-radius: 8px;
       }
     }
   }
-
+  
+  textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
   button {
     margin-top: 20px;
     padding: 10px 20px;

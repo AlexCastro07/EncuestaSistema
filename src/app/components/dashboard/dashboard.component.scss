@@ -9,6 +9,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: $third-color;
+  
 }
 
 .main {
@@ -61,37 +62,6 @@ body {
   padding: 20px;
   flex-grow: 1;
   margin-top: 70px;
-}
-
-// Modal Styles
-.modal-content {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  
-  .modal-header {
-    border-bottom: 1px solid #ddd;
-    h5 {
-      color: $primary-color;
-    }
-  }
-
-  .modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    button {
-      border-radius: 5px;
-      padding: 8px 15px;
-      &.btn-secondary {
-        background-color: #ddd;
-        color: #333;
-      }
-      &.btn-primary {
-        background-color: $secondary-color;
-        color: white;
-      }
-    }
-  }
 }
 
 // Media Queries

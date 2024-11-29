@@ -1,14 +1,26 @@
+
 <div class="row">
     <div class="container">
-        <div class="header-result">
-            <h1>{{preguntas.nameAnswer}}</h1>
+      <div class="header-result">
+        <h1>{{preguntas.nameAnswer}}</h1>
+      </div>
+      <div class="sub-header-result">
+        <h3>Total de encuestados: {{respuestas.length}}</h3>
+      </div>
+      <div class="contentCanvas" *ngFor="let pregunta of preguntas?.preguntas; let i = index">
+        
+        <!-- Mostrar respuestas numéricas en gráficos -->
+        <div *ngIf="pregunta.tipo !== '3'">
+          <canvas #myChart class="myChart" id="myChart" width="400" height="400" style="display: inline; margin-right: 5em;"></canvas>
         </div>
-        <div class="sub-header-result">
-            <h3>Total de encuestados: {{respuestas.length}}</h3>
-        </div>
-        <div class="contentCanvas" *ngFor="let pregunta of preguntas?.preguntas; let i = index ">
-            <canvas #myChart class="myChart" id="myChart" width="400" height="400" style="display: inline; margin-right: 5em;" ></canvas>
-        </div>
+        
+        <!-- Mostrar respuestas abiertas 
+        <div *ngIf="pregunta.tipo === '3'">
+          <h3>Pregunta abierta: {{ pregunta.pregunta }}</h3>
+          <div *ngFor="let respuesta of getRespuestasAbiertas(i)">
+            <p>{{ respuesta }}</p>
+          </div>
+        </div> -->
+      </div>
     </div>
-</div>
-
+  </div>

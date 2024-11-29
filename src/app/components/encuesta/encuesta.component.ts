@@ -32,7 +32,17 @@ export class EncuestaComponent implements OnInit {
   }
 
   save() {
-    this.respuestas.push(parseInt(this.respuesta));
+    if (this.pregunta.tipo === '3') {
+      // Asegúrate de que la respuesta abierta no esté vacía
+      if (!this.respuesta || this.respuesta.trim() === '') {
+        alert('Por favor, escribe una respuesta válida.');
+        return;
+      }
+      // Guarda la respuesta abierta como texto
+      this.respuestas.push({ respuesta: this.respuesta});
+    }else {
+      this.respuestas.push( parseInt(this.respuesta));
+    }
     this.next();
   }
   
